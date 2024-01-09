@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Explorer App</title>
+  <style>
+    .body {
+    display: flex;
+  }
+  
+  .Buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+  }
+  
+  #filesRotate {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  #fileDescriptionInput {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .custom-file-input::after {
+    content: none;
+  }
+  #fileContent {
+    margin-left: 10px;
+    width: 40vw;  /* 50% ширины экрана */
+    height: 100vh; /* 100% высоты экрана */
+    overflow-y: auto; /* добавление вертикальной прокрутки, если содержимое больше размеров элемента */
+    float: right; /* выравнивание элемента по правому краю */
+  }
+  #span{
+    float: right; 
+    cursor: pointer;
+  }
+  </style>
+  
+</head>
+<body>
+  <div class="body">
+    <div class="Buttons">
+      <div>
+        <button onclick="createFolder()">Создать папку</button>
+        <button onclick="changeFolderName()">Переименовать папку</button>
+        <button onclick="deleteElement()">Удалить папку</button>
+        <button onclick="handleFileSelection()"> Загрузить файл</button>
+        <button onclick="downloadSelectedFile()">Скачать файл</button>
+        <button onclick="changeFileName()">Переимновать файл</button>
+        <button onclick="deleteElement()">Удалить файл</button>
+      </div>
+      <ul id="filesRotate"></ul>
+    </div>
+    <div class="modal" id="myModal">
+      <div class="modal-content" id="modal-content">
+        <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
+        <h2>Введите краткое описание файла</h2>
+        <input type="text" id="fileDescriptionInput" placeholder="Введите краткое описание файла">
+        <button onclick="submitAndCloseModal(event)">Сохранить</button>
+      </div>
+    </div>
+    <div id="fileContent"></div>
+  </div>
+<script  src="/script.js">
+  
+ </script>
+</body>
+</html>
