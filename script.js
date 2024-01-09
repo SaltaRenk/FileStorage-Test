@@ -1,7 +1,7 @@
 "use strict";
 // Добавляем объявление типов для переменных
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.downloadSelectedFile = exports.showFileContent = exports.uploadFile = exports.submitAndCloseModal = exports.closeModal = exports.openModal = exports.createFolder = exports.handleFileInput = exports.handleFileSelection = exports.deleteElement = exports.changeFileName = void 0;
+exports.downloadSelectedFile = exports.showFileContent = exports.uploadFile = exports.submitAndCloseModal = exports.closeModal = exports.openModal = exports.createFolder = exports.handleFileInput = exports.handleFileSelection = exports.changeFolderName = exports.deleteElement = exports.changeFileName = void 0;
 var selectedFile;
 var choisedFile;
 var filesRotate = document.getElementById('filesRotate');
@@ -13,9 +13,7 @@ fileInput.onchange = function () { return handleFileInput(fileInput.files[0]); }
 // Обновляем соответствующие функции с явными типами переменных
 function changeFileName() {
     var renamedFolder = document.querySelector(".focused");
-    if (renamedFolder) {
-        renamedFolder.innerText = prompt('Enter new folder name:') || '';
-    }
+    renamedFolder.innerText = prompt('Enter new file name:') || '';
 }
 exports.changeFileName = changeFileName;
 function deleteElement() {
@@ -25,6 +23,11 @@ function deleteElement() {
     }
 }
 exports.deleteElement = deleteElement;
+function changeFolderName() {
+    var renamedFolder = document.querySelector(".focused");
+    renamedFolder.innerText = prompt('Enter new folder name:') || '';
+}
+exports.changeFolderName = changeFolderName;
 function handleFileSelection() {
     fileInput.click();
 }

@@ -12,9 +12,7 @@ fileInput.onchange = () => handleFileInput(fileInput.files![0]);
 // Обновляем соответствующие функции с явными типами переменных
 export function changeFileName(): void {
   let renamedFolder: HTMLElement | null = document.querySelector(".focused");
-  if (renamedFolder) {
-    renamedFolder.innerText = prompt('Enter new folder name:') || '';
-  }
+    renamedFolder!.innerText = prompt('Enter new file name:') || '';
 }
 
 export function deleteElement(): void {
@@ -22,6 +20,11 @@ export function deleteElement(): void {
   if (subFolderList) {
     subFolderList.remove();
   }
+}
+
+export function changeFolderName() : void{
+  let renamedFolder: HTMLElement | null = document.querySelector(".focused");
+  renamedFolder!.innerText = prompt('Enter new folder name:') || '';
 }
 
 export function handleFileSelection(): void {
