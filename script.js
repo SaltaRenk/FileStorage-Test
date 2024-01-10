@@ -1,16 +1,13 @@
 "use strict";
-// Добавляем объявление типов для переменных
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.downloadSelectedFile = exports.showFileContent = exports.uploadFile = exports.submitAndCloseModal = exports.closeModal = exports.openModal = exports.createFolder = exports.handleFileInput = exports.handleFileSelection = exports.changeFolderName = exports.deleteElement = exports.changeFileName = void 0;
 var selectedFile;
 var choisedFile;
 var filesRotate = document.getElementById('filesRotate');
-// Добавляем тип HTMLInputElement для fileInput
 var fileInput = document.createElement('input');
 fileInput.type = 'file';
 fileInput.accept = '.txt,.pdf';
 fileInput.onchange = function () { return handleFileInput(fileInput.files[0]); };
-// Обновляем соответствующие функции с явными типами переменных
 function changeFileName() {
     var renamedFolder = document.querySelector(".focused");
     renamedFolder.innerText = prompt('Enter new file name:') || '';
@@ -42,11 +39,13 @@ function handleFileInput(file) {
     }
 }
 exports.handleFileInput = handleFileInput;
+//Функционал изменения описания файлов
 filesRotate.addEventListener("contextmenu", function (event) {
-    var test = document.querySelector('.focused');
-    var test1 = prompt('change');
-    test.setAttribute('title', test1);
+    var descriptionChange = document.querySelector('.focused');
+    var newDescription = prompt('Change description');
+    descriptionChange.setAttribute('title', newDescription);
 });
+//Функционал указания фокуса на выбранных элементах списка
 filesRotate.addEventListener("click", function (event) {
     var target = event.target;
     if (target.tagName === "LI") {
